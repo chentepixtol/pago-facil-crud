@@ -1,0 +1,16 @@
+
+login:
+    path:     /login
+    defaults: { _controller: app.api.controller:loginAction }
+
+user.create:
+    path:     /user/create
+    defaults: { _controller: app.api.user.controller:createAction }
+
+user.update:
+    path:     /user/update
+    defaults: { _controller: app.api.user.controller:updateAction }
+
+user.delete:
+    path:     /user/delete
+    defaults: { _controller: app.api.user.controller:deleteAction }
