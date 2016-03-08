@@ -3,9 +3,15 @@ login:
     path:     /login
     defaults: { _controller: app.api.controller:loginAction }
 
+user.get:
+    path:     /user
+    defaults: { _controller: app.api.user.controller:findAction }
+    methods:  [GET]
+
 user.create:
-    path:     /user/create
+    path:     /user
     defaults: { _controller: app.api.user.controller:createAction }
+    methods:  [POST]
 
 user.update:
     path:     /user/{id}

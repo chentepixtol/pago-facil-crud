@@ -74,6 +74,20 @@ class User {
     }
 
     /**
+     * @return array
+     */
+    public function getAll()
+    {
+        $users = $this->userRepository->findAll();
+
+        return array_map(function($user) {
+            $data = $user->toArray();
+            unset($data['token']);
+            return $data;
+        }, $users);
+    }
+
+    /**
      * @param $email
      * @param $password
      * @return \AppBundle\Entity\User

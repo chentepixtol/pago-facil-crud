@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Pago facil CRUD</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <h3>Pago facil CRUD</h3>
+
+    <div id="main"></div>
+
+    <!-- // Template for handlebars js -->
+    {{ source("AppBundle:Front:home.user.twig") }}
+
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.12.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/handlebars-v4.0.5.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+
+</body>
+</html>

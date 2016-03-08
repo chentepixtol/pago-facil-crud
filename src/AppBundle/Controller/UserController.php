@@ -15,6 +15,33 @@ class UserController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
+    public function findAction(Request $request)
+    {
+        if (!$this->isTokenValid($request->query->get('user'), $request->query->get('token'))) {
+            return $this->jsonResponse([
+                'result' => false,
+                'message' => 'Token invalido',
+            ], 403);
+        }
+
+        try {
+            $users = $this->serviceUser->getAll();
+            return $this->jsonResponse([
+                'result' => true,
+                'collection' => $users,
+            ]);
+        } catch (\Exception $e) {
+            return $this->jsonResponse([
+                'result' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request)
     {
         if (!$this->isTokenValid($request->query->get('user'), $request->query->get('token'))) {

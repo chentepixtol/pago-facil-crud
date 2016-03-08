@@ -14,6 +14,9 @@ services:
          class: AppBundle\Service\User
          arguments: ['@app.repository.user', '@doctrine.orm.entity_manager']
 
+     app.front.controller:
+         class: AppBundle\Controller\FrontController
+         arguments: ['@templating.engine.twig']
 
      app.api.controller:
          class: AppBundle\Controller\ApiController
