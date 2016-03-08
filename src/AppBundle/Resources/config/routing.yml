@@ -8,9 +8,11 @@ user.create:
     defaults: { _controller: app.api.user.controller:createAction }
 
 user.update:
-    path:     /user/update
+    path:     /user/{id}
     defaults: { _controller: app.api.user.controller:updateAction }
+    methods:  [PUT]
 
 user.delete:
-    path:     /user/delete
+    path:     /user/{id}
     defaults: { _controller: app.api.user.controller:deleteAction }
+    methods:  [DELETE]

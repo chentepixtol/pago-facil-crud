@@ -40,10 +40,11 @@ class UserController
     }
 
     /**
+     * @param $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function updateAction(Request $request)
+    public function updateAction($id, Request $request)
     {
         if (!$this->isTokenValid($request->query->get('user'), $request->query->get('token'))) {
             return $this->jsonResponse([
@@ -53,7 +54,7 @@ class UserController
         }
         try {
             $userEdited = $this->serviceUser->update(
-                $request->request->get('id'),
+                $id,
                 $request->request->get('email'),
                 $request->request->get('password')
             );
@@ -71,10 +72,11 @@ class UserController
     }
 
     /**
+     * @param $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request)
+    public function deleteAction($id, Request $request)
     {
         if (!$this->isTokenValid($request->query->get('user'), $request->query->get('token'))) {
             return $this->jsonResponse([
@@ -84,7 +86,7 @@ class UserController
         }
 
         try {
-            $userRemoved = $this->serviceUser->remove($request->request->get('id'));
+            $userRemoved = $this->serviceUser->remove($id);
 
             return $this->jsonResponse([
                 'result' => true,
