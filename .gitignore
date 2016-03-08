@@ -1,3 +1,9 @@
+# IDE
+.vagrant/
+.idea/
+Vagrantfile
+Homestead.yaml
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
