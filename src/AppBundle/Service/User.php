@@ -56,4 +56,82 @@ class User {
 
         return $errors;
     }
+
+    /**
+     * @param $email
+     * @param $token
+     * @return \AppBundle\Entity\User
+     */
+    public function validateToken($email, $token)
+    {
+        $user = $this->userRepository->findOneByEmail($email);
+
+        if ($user && $token && $user->getToken() == $token) {
+            return $user;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return \AppBundle\Entity\User
+     */
+    public function create($email, $password)
+    {
+        $user = new \AppBundle\Entity\User();
+        $user->setEmail($email);
+        $user->setPassword($password);
+        $user->setToken(null);
+        $user->setIsActive(1);
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
+
+    /**
+     * @param $id
+     * @param $email
+     * @param $password
+     * @return \AppBundle\Entity\User
+     * @throws \Exception
+     */
+    public function update($id, $email, $password, $status = true)
+    {
+        $user = $this->userRepository->findOneById($id);
+
+        if (!$user) {
+            throw new \Exception(sprintf("El usuario con ID %s no existe", $id));
+        }
+
+        $user->setEmail($email);
+        $user->setPassword($password);
+        $user->setIsActive($status);
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
+
+    /**
+     * @param $id
+     * @return \AppBundle\Entity\User
+     * @throws \Exception
+     */
+    public function remove($id)
+    {
+        $user = $this->userRepository->findOneById($id);
+
+        if (!$user) {
+            throw new \Exception(sprintf("El usuario con ID %s no existe", $id));
+        }
+
+        $user->setIsActive(false);
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
 }

@@ -3,22 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Service\BaseController;
-use AppBundle\Service\User;
+use AppBundle\Service\Auth;
 use Symfony\Component\HttpFoundation\Request;
 
 class ApiController
 {
     use BaseController;
-
-    protected $serviceUser;
-
-    /**
-     * @param User $serviceUser
-     */
-    public function __construct(User $serviceUser)
-    {
-        $this->serviceUser = $serviceUser;
-    }
+    use Auth;
 
     /**
      * @param Request $request

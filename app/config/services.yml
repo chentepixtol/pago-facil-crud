@@ -14,10 +14,11 @@ services:
          class: AppBundle\Service\User
          arguments: ['@app.repository.user', '@doctrine.orm.entity_manager']
 
+
      app.api.controller:
          class: AppBundle\Controller\ApiController
          arguments: ['@app.service.user']
 
      app.api.user.controller:
          class: AppBundle\Controller\UserController
-         arguments: []
+         arguments: ['@app.service.user']
