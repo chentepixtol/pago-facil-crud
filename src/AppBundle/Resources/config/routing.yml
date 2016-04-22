@@ -22,3 +22,23 @@ user.delete:
     path:     /user/{id}
     defaults: { _controller: app.api.user.controller:deleteAction }
     methods:  [DELETE]
+
+employee.get:
+    path:     /employee
+    defaults: { _controller: app.api.employee.controller:findAction }
+    methods:  [GET]
+
+employee.create:
+    path:     /employee
+    defaults: { _controller: app.api.employee.controller:createAction }
+    methods:  [POST]
+
+employee.update:
+    path:     /employee/{id}
+    defaults: { _controller: app.api.employee.controller:updateAction }
+    methods:  [PUT]
+
+employee.delete:
+    path:     /employee/{id}
+    defaults: { _controller: app.api.employee.controller:deleteAction }
+    methods:  [DELETE]

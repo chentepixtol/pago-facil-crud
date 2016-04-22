@@ -1,0 +1,45 @@
+<script id="list-employee" type="text/x-handlebars-template">
+    <div>
+        <a class="newEmployee" href="#">Nuevo Empleado</a>
+    </div>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Ap. Paterno</th>
+                <th>Ap. Materno</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Ingresos Anuales</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each employees}}
+            <tr>
+                <td>{{ first_name }}</td>
+                <td>{{ last_name }}</td>
+                <td>{{ surname }}</td>
+                <td>{{ birthdate }}</td>
+                <td>{{ salary }}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+    <br>
+
+    <div><a class="close" href="#">Cerrar Session</a></div>
+</script>
+
+<script id="edit-employee" type="text/x-handlebars-template">
+    <form id="editEmployee">
+        <input type="hidden" id="idEmployeeInput" name="id" value="{{ id }}">
+        <input type="text" id="first_name" name="first_name">
+        <input type="text" id="last_name" name="last_name">
+        <input type="text" id="surname" name="surname">
+        <input type="text" id="birthdate" name="birthdate">
+        <input type="text" id="salary" name="salary">
+        <input class="save" type="submit" value="Guardar">
+        <input class="returnList" type="button" value="Cancelar">
+    </form>
+</script>

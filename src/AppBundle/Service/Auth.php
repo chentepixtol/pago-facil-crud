@@ -13,7 +13,7 @@ trait Auth
     /**
      * @param User $serviceUser
      */
-    public function __construct(User $serviceUser)
+    public function setServiceUser(User $serviceUser)
     {
         $this->serviceUser = $serviceUser;
     }

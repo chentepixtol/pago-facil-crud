@@ -10,9 +10,18 @@ services:
          factory: ['@doctrine.orm.default_entity_manager', getRepository]
          arguments: [AppBundle\Entity\User]
 
+     app.repository.employee:
+         class: Doctrine\ORM\EntityRepository
+         factory: ['@doctrine.orm.default_entity_manager', getRepository]
+         arguments: [AppBundle\Entity\Employee]
+
      app.service.user:
          class: AppBundle\Service\User
          arguments: ['@app.repository.user', '@doctrine.orm.entity_manager']
+
+     app.service.employee:
+         class: AppBundle\Service\Employee
+         arguments: ['@app.repository.employee', '@doctrine.orm.entity_manager']
 
      app.front.controller:
          class: AppBundle\Controller\FrontController
@@ -20,8 +29,16 @@ services:
 
      app.api.controller:
          class: AppBundle\Controller\ApiController
-         arguments: ['@app.service.user']
+         calls:
+             - [setServiceUser, ['@app.service.user']]
 
      app.api.user.controller:
          class: AppBundle\Controller\UserController
-         arguments: ['@app.service.user']
+         calls:
+             - [setServiceUser, ['@app.service.user']]
+
+     app.api.employee.controller:
+         class: AppBundle\Controller\EmployeeController
+         calls:
+             - [setServiceUser, ['@app.service.user']]
+             - [setServiceEmployee, ['@app.service.employee']]
