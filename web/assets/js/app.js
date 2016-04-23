@@ -129,7 +129,7 @@ $(document).ready(function() {
 
     });
 
-    $('#main').on('click', '.close', function(e) {
+    $('#employee-container').on('click', '.close', function(e) {
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('token');
         loadTemplate(getTemplate("#login")());

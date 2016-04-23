@@ -1,9 +1,9 @@
 <script id="list-employee" type="text/x-handlebars-template">
     <div>
-        <a class="newEmployee" href="#">Nuevo Empleado</a>
+        <a class="newEmployee btn" href="#">Nuevo Empleado</a>
     </div>
     <br>
-    <table>
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -28,18 +28,49 @@
 
     <br>
 
-    <div><a class="close" href="#">Cerrar Session</a></div>
+    <div><a class="btn close" href="#">Cerrar Session</a></div>
 </script>
 
 <script id="edit-employee" type="text/x-handlebars-template">
-    <form id="editEmployee">
+
+    <form id="editEmployee" class="form-horizontal">
         <input type="hidden" id="idEmployeeInput" name="id" value="{{ id }}">
-        <input type="text" id="first_name" name="first_name">
-        <input type="text" id="last_name" name="last_name">
-        <input type="text" id="surname" name="surname">
-        <input type="text" id="birthdate" name="birthdate">
-        <input type="text" id="salary" name="salary">
-        <input class="save" type="submit" value="Guardar">
-        <input class="returnList" type="button" value="Cancelar">
+        <div class="control-group">
+            <label class="control-label" for="first_name">Nombres</label>
+            <div class="controls">
+                <input type="text" id="first_name" name="first_name">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="last_name">Ap. Paterno</label>
+            <div class="controls">
+                <input type="text" id="last_name" name="last_name">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="surname">Ap. Materno</label>
+            <div class="controls">
+                <input type="text" id="surname" name="surname">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="birthdate">Fecha Nac.</label>
+            <div class="controls">
+                <input type="text" id="birthdate" name="birthdate">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="salary">Sueldo</label>
+            <div class="controls">
+                <input type="text" id="salary" name="salary">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input class="btn btn-primary save" type="submit" value="Guardar">
+                <input class="btn returnList" type="button" value="Cancelar">
+            </div>
+        </div>
     </form>
+
 </script>

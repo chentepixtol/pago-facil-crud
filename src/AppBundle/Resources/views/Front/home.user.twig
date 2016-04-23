@@ -1,37 +1,73 @@
 <script id="login" type="text/x-handlebars-template">
+
     <form id="loginForm">
-        <div>
-            <div>Email <input id="loginEmail" type="text" name="email"></div>
-            <div>Password <input id="loginPassword" type="password" name="password"></div>
+        <div class="control-group">
+            <label class="control-label" for="loginEmail">Email</label>
+            <div class="controls">
+                <input id="loginEmail" type="text" name="email">
+            </div>
         </div>
-        <input class="loginButton" type="submit" value="Login">
+        <div class="control-group">
+            <label class="control-label" for="loginPassword">Password</label>
+            <div class="controls">
+                <input id="loginPassword" type="password" name="password">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input class="btn btn-primary loginButton" type="submit" value="Login">
+            </div>
+        </div>
     </form>
+
 </script>
 
 <script id="list" type="text/x-handlebars-template">
     <div>
-        <a class="newItem" href="#">Nuevo Usuario</a>
+        <a class="btn newItem" href="#">Nuevo Usuario</a>
     </div>
-    <ul>
+    <br>
+    <table class="table table-bordered table-striped">
+        <tbody>
         {{#each users}}
-        <li>
-            {{ email }} {{#if is_active}}<small>(Activo)</small>{{/if}}
-            <a data-id="{{ id }}" data-email="{{ email }}" class="edit" href="#">Editar</a>
-            <a data-id="{{ id }}" data-email="{{ email }}" class="delete" href="#">Borrar</a>
-        </li>
+            <tr>
+                <td>{{ email }} {{#if is_active}}<small>(Activo)</small>{{/if}}</td>
+                <td><a data-id="{{ id }}" data-email="{{ email }}" class="btn edit" href="#">Editar</a></td>
+                <td><a data-id="{{ id }}" data-email="{{ email }}" class="btn delete" href="#">Borrar</a></td>
+            </tr>
         {{/each}}
-    </ul>
+        </tbody>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+    </table>
 </script>
 
 <script id="edit" type="text/x-handlebars-template">
-    <form id="editForm">
+    <form class="form-horizontal" id="editForm">
         <input type="hidden" id="idInput" name="id" value="{{ id }}">
-        <div>
-            <div>Email <input type="text" id="emailInput" name="email" value="{{ email }}"></div>
-            <div>Password <input type="password" id="passwordInput" name="password" value=""></div>
-        </div>
-        <input class="save" type="submit" value="Guardar">
-        <input class="returnList" type="button" value="Cancelar">
+        <form >
+            <div class="control-group">
+                <label class="control-label" for="emailInput">Email</label>
+                <div class="controls">
+                    <input type="text" id="emailInput" name="email" value="{{ email }}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="passwordInput">Password</label>
+                <div class="controls">
+                    <input type="password" id="passwordInput" name="password" value="">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary save" type="submit" value="Guardar">
+                    <input class="btn returnList" type="button" value="Cancelar">
+                </div>
+            </div>
+        </form>
     </form>
-    <br>
 </script>
